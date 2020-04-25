@@ -34,8 +34,8 @@ public class Singleton {
         
         return result;
     }
-    
-    public class User{
+
+    public class User {
         private String username;
         private String firstName;
         private String lastName;
