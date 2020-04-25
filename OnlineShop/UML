@@ -61,7 +61,7 @@ class User {
     -String password
     -boolean isLoggedIn = false
     +User (String username) //constructor
-    +{abstract}register () : void
+    +{abstract}register (String username) : void
     +isThereAccountWithUsername (String username) : boolean
     +isEmailValid (String email) : boolean
     +isPhoneNumberValid (String phoneNumber) : boolean
@@ -72,9 +72,9 @@ class User {
 }
 
 class Manager {
-    -int numberOfManagers = 0
+    -{static} int numberOfManagers = 0
     +Manager (String username) // constructor
-    +register () // age manager avali e normal ezafe beshe vagarna darkhast bede b manager avali
+    +register (String username) // age manager avali e normal ezafe beshe vagarna darkhast bede b manager avali
     +deleteUser(String username) : void // also check if such a username exists
     +listUsernames () : void
     +displayInfo (String username) : void // also check if such a username exists
@@ -85,7 +85,7 @@ class Buyer {
     -ShoppingCart cart
     -LogBuy logBuy
     +Buyer (String username) // constructor
-    +register () // normal ezafe beshe
+    +register (String username) // normal ezafe beshe
     +deleteUser() : void
     +displayInfo () : void
     +purchase () : void
@@ -103,7 +103,7 @@ class Seller {
     -ArrayList<Product> productsSelling
     -ArrayList<Sale> salesTheyHave
     +Seller (String username, String companyName, String companyAddress) // constuctor
-    +register () //darkhast bede be modir
+    +register (String username) //darkhast bede be modir
     +deleteUser() : void
     +displayInfo () : void
     +displayCompanyInfo () : void
