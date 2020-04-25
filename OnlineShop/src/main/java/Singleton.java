@@ -23,7 +23,7 @@ public class Singleton {
     }
     
     public void mainPage() {
-    
+        //1234
     }
     
     public int generateRandomNumber (int numberOfDigits) {
