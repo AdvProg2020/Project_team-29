@@ -23,7 +23,7 @@ public class Singleton {
     }
     
     public void mainPage() {
-    
+        //1234
     }
     
     public int generateRandomNumber (int numberOfDigits) {
@@ -34,7 +34,7 @@ public class Singleton {
         
         return result;
     }
-    
+
     public class User {
         private String username;
         private String firstName;
