@@ -175,6 +175,57 @@ public class Singleton {
                 }
         }
     }
+
+    //elahe
+    public class request{
+
+        //enum for all types of requests
+        enum requestType {
+            CREATE_SELLER_ACCOUNT,
+            EDIT_PRODUCT,
+            ADD_PRODUCT,
+            ADD_OFF,
+            EDIT_OFF,
+        }
+
+        //variables here
+
+        private String requestId;
+
+        private user makerOfTheRequest;
+        //the user that makes he request in the first palace
+
+        private boolean isAccepted = false;
+        //for checking if the request is accepted or not and is false at he beginning
+
+        private requestType type;
+        //sees what type the request is (the purpose of the request
+
+        //constructor
+        public Request( user user , requestType type) {
+            this.type = type;
+            this.user = user;
+        }
+
+        //methods start here
+
+        //lists all requests
+        public void listRequest(){}
+
+        //checks if request exists or not
+        public boolean isThereRequestWithId(String requestId){}
+
+        //checks first if a request with this i exists and then displays the information for this request
+        public void displayInfo(String requestId){}
+
+        //checks if request exists , changes to true and then executes the action for the request type
+        public void accept(String requestId){
+            isAccepted = true;
+        }
+
+        //checks if request exists and then removes it from he request list
+        public void decline(String requestId){}
+    }
     
 }
 
