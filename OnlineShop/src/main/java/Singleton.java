@@ -47,7 +47,45 @@ public class Singleton {
     public class Seller extends User
     public class Buyer extends User
     public class Manager extends User
-    public class Request
+    public class Request{
+         //elahe
+        //enum for all types of requests
+        enum requestType {
+            CREATE_SELLER_ACCOUNT,
+            EDIT_PRODUCT,
+            ADD_PRODUCT,
+            ADD_OFF,
+            EDIT_OFF,
+        }
+        //variables here
+        private String requestId;
+        private user makerOfTheRequest;
+        //the user that makes he request in the first palace
+        private boolean isAccepted = false;
+        //for checking if the request is accepted or not and is false at he beginning
+        private requestType type;
+        //sees what type the request is (the purpose of the request
+
+        //constructor
+        public Request( user user , requestType type) {
+            this.type = type;
+            this.user = user;
+        }
+        //methods start here
+
+        //lists all requests
+        public void listRequest(){}
+        //checks if request exists or not
+        public boolean isThereRequestWithId(String requestId){}
+        //checks first if a request with this i exists and then displays the information for this request
+        public void displayInfo(String requestId){}
+        //checks if request exists , changes to true and then executes the action for the request type
+        public void accept(String requestId){
+            isAccepted = true;
+        }
+        //checks if request exists and then removes it from he request list
+        public void decline(String requestId){}
+    }
     public class Order {
         private String orderId;
         private DateAndTime dateAndTime;
@@ -63,7 +101,74 @@ public class Singleton {
     public class Log
     public class LogSell extends Log
     public class LogBuy extends Log
-    public class Product
+    public class Product{
+        //enum for checking the product situation
+        enum ProductSituation {
+            CREATION_INVESTIGATION,
+            EDITION_INVESTIGATION,
+            ACCEPTED,
+        }
+        //variables here
+        private ArrayList <Comment> commentList;
+        private ArrayList <Sale> salesThatContainsIt;
+        private String productId;
+        //for showing how many views the peoduct has
+        private int views = 0;
+        private String timeAndDateOfCreation;
+        private ProductSituation situation;
+        //name of product
+        private String name;
+        //name of company
+        private String company;
+        private double price;
+        private seller seller;
+        //is product available or not
+        private boolean isAvailable;
+        private category category;
+        //for storing special properties and their types
+        private HashMap<String,String> specialProperties;
+        private String info;
+        private rating avgRating;
+
+        //constructor
+        public Product( String name, String company, double price, seller seller, category category, HashMap<String, String> specialProperties, String info) {
+            this.name = name;
+            this.company = company;
+            this.price = price;
+            this.seller = seller;
+            this.category = category;
+            this.specialProperties = specialProperties;
+            this.info = info;
+        }
+
+        //methods start here
+
+        //lists all products and shows them
+        public void listProduct(){}
+
+        //hecks if product exists or not
+        public boolean isThereProductWithProductId (String productId){}
+
+        //checks if product with that id exists and hen removes it
+        public void removeProductById (String productId){}
+
+        //checks if it exists and then shows its information
+        public void displayInfoById (String productId){}
+
+        //checks if i exists and then sends a request for manager to be edited
+        public void editProductById (String productId){}
+
+        //checks if exists and sends request
+        public void addProduct (){}
+
+        //
+        public void showBriefAttributes(){}
+
+        public void showAllAttributes (){}
+
+        //compares the two products if they are in the same subcategory
+        public void compare (String productId){}
+    }
     public class Sale {
         private String offId;
         private ArrayList<Product> productList;
@@ -97,7 +202,37 @@ public class Singleton {
         ACCEPTED
     }
     public class Comment
-    public class Category
+    public class Category{
+        //elahe
+         //variables here
+        private ArrayList<String> specialProperties;
+        private ArrayList<Category> subCategory;
+        private ArrayList<Product> productList;
+        //name of the category
+        private String name;
+
+        //constructor
+        public Category(ArrayList<String> specialProperties, ArrayList<Category> subCategory, ArrayList<Product> productList, String name) {
+            this.specialProperties = specialProperties;
+            this.subCategory = subCategory;
+            this.productList = productList;
+            this.name = name;
+        }
+
+        //methods start here
+        public boolean isThereACategoryWithName (String name){}
+
+        //also checks if category exits
+        public void editCategory (String name){}
+
+        //also checks if category exits
+        public void removeCatergory (String name){}
+
+        public void listCategories (){}
+
+        public String toString (){}
+
+    }
     public class Rating {
         public Buyer buyer;
         public double ratingNumber;
@@ -109,7 +244,48 @@ public class Singleton {
         }
     }
     public class Coupon
-    public class Filter
+    public class Filter{
+        //elahe
+        //enum for filter types
+        enum FilterType{
+            BY_CATEGORY,
+            BY_SPECIAL_PROPERTY,
+            BY_PROPERTY,  //EXCEPT FOR PRICE
+            BY_PRICE,
+        }
+        //variables here
+        private String name;
+        private FilterType type;
+        //for checking if user is choosing from the suggested filters or not
+        private boolean isValid;
+        //for checking if a filter is being used or not
+        private boolean isBeingUsed;
+
+        //constructor
+        public Filter(FilterType type)
+        {
+            this.type = type;
+        }
+
+        //methods start from here
+
+        //checks if filter is valid and then changes it to a filter that is being used
+        public void updateValidFilters (){}
+
+        //shows filters that are valid for being used
+        public void showValidFilters (){}
+
+        //also checks the validity of the filter
+        public void filter(String command){}
+
+        //shows the filters being used and also checks their validity
+        public void showUsedFilters (){}
+
+        // check if the filter exists and is being used then disable it
+        public void disableFilter(String name){}
+
+
+    }
     public class ShoppingCart {
         private ArrayList<Product> productsInCart;
         private int numberOfProducts = 0;
@@ -176,57 +352,7 @@ public class Singleton {
         }
     }
 
-    //elahe
-    public class request{
 
-        //enum for all types of requests
-        enum requestType {
-            CREATE_SELLER_ACCOUNT,
-            EDIT_PRODUCT,
-            ADD_PRODUCT,
-            ADD_OFF,
-            EDIT_OFF,
-        }
-
-        //variables here
-
-        private String requestId;
-
-        private user makerOfTheRequest;
-        //the user that makes he request in the first palace
-
-        private boolean isAccepted = false;
-        //for checking if the request is accepted or not and is false at he beginning
-
-        private requestType type;
-        //sees what type the request is (the purpose of the request
-
-        //constructor
-        public Request( user user , requestType type) {
-            this.type = type;
-            this.user = user;
-        }
-
-        //methods start here
-
-        //lists all requests
-        public void listRequest(){}
-
-        //checks if request exists or not
-        public boolean isThereRequestWithId(String requestId){}
-
-        //checks first if a request with this i exists and then displays the information for this request
-        public void displayInfo(String requestId){}
-
-        //checks if request exists , changes to true and then executes the action for the request type
-        public void accept(String requestId){
-            isAccepted = true;
-        }
-
-        //checks if request exists and then removes it from he request list
-        public void decline(String requestId){}
-    }
-    
 }
 
 
