@@ -60,7 +60,7 @@ public class Singleton {
         //variables here
         private String requestId;
         private user makerOfTheRequest;
-        //the user that makes he request in the first palace
+        //the user that makes the request in the first place
         private boolean isAccepted = false;
         //for checking if the request is accepted or not and is false at he beginning
         private requestType type;
@@ -86,7 +86,26 @@ public class Singleton {
         public void displayInfo(String requestId){}
         //checks if request exists , changes to true and then executes the action for the request type
         public void accept(String requestId){
-            isAccepted = true;
+            switch(requestType){
+                case CREATE_SELLER_ACCOUNT :
+                    //remove request id
+                    allSellers.add(makerOfTheRequest);
+                    allUsers.add(makerOfTheRequest);
+                    isAccepted = true;
+                    break;
+                case ADD_PRODUCT :
+                    //remove request id
+                    isAccepted = true;
+                    break;
+                case ADD_OFF :
+                    //remove request id
+                    isAccepted = true;
+                    break;
+                case EDIT_OFF :
+                    //remove request id
+                    isAccepted =true;
+                    break;
+            }
         }
         //checks if request exists and then removes it from he request list
         public void decline(String requestId){}
