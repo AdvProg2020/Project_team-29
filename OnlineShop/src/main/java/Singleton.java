@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+
 import static java.lang.Math.pow;
 
 public class Singleton {
@@ -44,13 +46,17 @@ public class Singleton {
         private String password;
         private boolean isLoggedIn = false;
     }
+    
     public class Seller extends User
+    
     public class Buyer extends User
+    
     public class Manager extends User
+    
     public class Request{
          //elahe
         //enum for all types of requests
-        enum requestType {
+        enum RequestType {
             CREATE_SELLER_ACCOUNT,
             EDIT_PRODUCT,
             ADD_PRODUCT,
@@ -59,17 +65,17 @@ public class Singleton {
         }
         //variables here
         private String requestId;
-        private user makerOfTheRequest;
-        //the user that makes the request in the first place
+        private User makerOfTheRequest;
+        //the user that makes he request in the first palace
         private boolean isAccepted = false;
         //for checking if the request is accepted or not and is false at he beginning
-        private requestType type;
-        //sees what type the request is (the purpose of the request
+        private RequestType type;
+        //sees what type the request is (the purpose of the request)
 
         //constructor
-        public Request( user user , requestType type) {
+        public Request(User user , RequestType type) {
             this.type = type;
-            this.user = user;
+            makerOfTheRequest = user;
         }
         //methods start here
 
@@ -110,11 +116,12 @@ public class Singleton {
         //checks if request exists and then removes it from he request list
         public void decline(String requestId){}
     }
+    
     public class Order {
         private String orderId;
         private DateAndTime dateAndTime;
         private ArrayList<Product> products;
-        private int numOfProducts = 0;
+        private int numOfProducts;
         private double offSaleAmount, offCouponAmount, totalOffAmount = offSaleAmount + offCouponAmount;
         double totalPrice;
         
@@ -123,8 +130,11 @@ public class Singleton {
         }
     }
     public class Log
+    
     public class LogSell extends Log
+    
     public class LogBuy extends Log
+    
     public class Product{
         //enum for checking the product situation
         enum ProductSituation {
@@ -145,7 +155,7 @@ public class Singleton {
         //name of company
         private String company;
         private double price;
-        private seller seller;
+        private Seller seller;
         //is product available or not
         private boolean isAvailable;
         private category category;

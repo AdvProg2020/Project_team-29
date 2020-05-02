@@ -115,7 +115,6 @@ class Seller {
 class Request {
     -String requestId
     -User makerOfTheRequest
-    -boolean isAccepted = false
     -RequestType type
     +Request (User user, RequestType type) // constructor
     +listRequests () : void
@@ -188,8 +187,8 @@ class Product {
     +displayInfoById (String productId) : void // also check if it exists
     +editProductById (String productId) : void // also check if it exists and create a request to edit
     +addProduct () : void // asks for properties input and makes a request for a product creation
-    +showBriefAttributes () : void
-    +showAllAttributes () : void
+    +showBriefAttributes (String productId) : void
+    +showAllAttributes (String productId) : void
     +compare (String productId2) : void // if both products are in the same subcategory
     compare them. (use "this" keyword to get productId1)
 }
