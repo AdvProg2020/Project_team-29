@@ -296,7 +296,7 @@ class ShoppingCart {
     -double totalPrice = 0
     -boolean hasEnoughCredit = true
     +ShoppingCart () // constructor
-    +update () : void
+    +addProduct(String productId) : void
     +viewCart () : void
     +listProducts () : void
     +isProductAvailableInCart(String productId) : boolean // checks if it exists and is in the cart
