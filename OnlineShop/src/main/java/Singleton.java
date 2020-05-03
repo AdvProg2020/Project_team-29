@@ -80,14 +80,38 @@ public class Singleton {
         //methods start here
 
         //lists all requests
-        public void listRequest(){}
+        public void listRequest()
+        {
+            for(int i=0 ; i< allRequest.size() ; i++){
+                System.out.println(allRequest.get(i));
+            }
+        }
         //checks if request exists or not
         public boolean isThereRequestWithId(String requestId){}
         //checks first if a request with this i exists and then displays the information for this request
         public void displayInfo(String requestId){}
         //checks if request exists , changes to true and then executes the action for the request type
         public void accept(String requestId){
-            isAccepted = true;
+            switch(requestType){
+                case CREATE_SELLER_ACCOUNT :
+                    //remove request id
+                    allSellers.add(makerOfTheRequest);
+                    allUsers.add(makerOfTheRequest);
+                    isAccepted = true;
+                    break;
+                case ADD_PRODUCT :
+                    //remove request id
+                    isAccepted = true;
+                    break;
+                case ADD_OFF :
+                    //remove request id
+                    isAccepted = true;
+                    break;
+                case EDIT_OFF :
+                    //remove request id
+                    isAccepted =true;
+                    break;
+            }
         }
         //checks if request exists and then removes it from he request list
         public void decline(String requestId){}
@@ -154,7 +178,10 @@ public class Singleton {
         //methods start here
 
         //lists all products and shows them
-        public void listProduct(){}
+        public void listProduct()
+        {for(int i=0 ; i< allProducts.size() ; i++){
+            System.out.println(allProducts.get(i));
+        } }
 
         //hecks if product exists or not
         public boolean isThereProductWithProductId (String productId){}
@@ -230,15 +257,29 @@ public class Singleton {
         }
 
         //methods start here
-        public boolean isThereACategoryWithName (String name){}
+        public boolean isThereACategoryWithName (String name){
+            return allCategoriesAndSubcategories.contains(name);
+        }
 
-        //also checks if category exits
+        //also checks if category exits  , changes name and properties
         public void editCategory (String name){}
 
         //also checks if category exits
-        public void removeCatergory (String name){}
+        public void removeCatergory (String name){
+            if(allCategoriesAndSubcategories.contains(name)){
+                allCategoriesAndSubcategories.remove(allCategoriesAndSubcategories.inddexOf(name));
+            }
+            else{
+                System.out.println("Category with this name does not exist");
+                //and then gets input again
+            }
+        }
 
-        public void listCategories (){}
+        public void listCategories(){
+            for(int i=0 ; i<allCategoriesAndSubcategories.size() ; i++){
+                System.out.println(allCategoriesAndSubcategories.get(i));
+            }
+        }
 
         public String toString (){}
 
